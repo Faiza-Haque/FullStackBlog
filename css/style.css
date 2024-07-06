@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0 auto;
     background-color: rgb(188, 209, 170);
@@ -38,9 +42,11 @@ nav .list-item {
 nav .list-item:last-child {
     margin-right: 0;
 }
-section{
-    margin:0 15px;
+
+section {
+    margin: 0 15px;
 }
+
 section .container {
     margin-bottom: 20px;
     border: 1px solid black;
@@ -53,32 +59,39 @@ section .container .header {
     background-color: #8dac7b;
 
 }
+
 section .container .header,
-section .container .body{
-padding: 10px;
+section .container .body {
+    padding: 10px;
 }
-.form-group{
+
+.form-group {
     margin-bottom: 20px;
 }
-.form-group label{
+
+.form-group label {
     font-size: 1.5rem;
     font-weight: 600;
 }
+
 .input {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
 }
-.btn-container{
+
+.btn-container {
     display: flex;
     justify-content: center;
 }
-.btn{
+
+.btn {
     width: 100%;
     padding: 10px 0;
     font-size: 1.8rem;
 }
-.btn-new-post{
+
+.btn-new-post {
     margin-top: 15px;
     width: auto;
     padding: 10px 15px;
@@ -86,15 +99,22 @@ padding: 10px;
     border: 0;
     background-color: #8dac7b;
 }
-.dashboard-container{
+
+.dashboard-container {
     border: 2px solid #8dac7b;
 }
-.dashboard-title{
+
+.dashboard-title {
     background-color: #8dac7b;
     font-size: 21px;
     padding: 10px 20px;
     margin-bottom: 10px;
 }
-.dashboard-body{
+
+.dashboard-body {
     padding: 15px;
+}
+a{
+  
+   font-size: 15px;
 }
