@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
-class Users extends Model { }
-Users.init({
+class User extends Model { }
+User.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -38,4 +38,4 @@ Users.init({
     freezeTableName: true,
     modelName: "users"
 });
-module.exports = Users;
+module.exports = User;
