@@ -15,10 +15,13 @@
         <nav>
 
             <ul class="list">
-                <li class="list-item"> <a href="#house">Home</a></li>
+                <li class="list-item"> <a href="/">Home</a></li>
                 <li class="list-item"> <a href="#dash">Dashboard</a></li>
-                <li class="list-item"> <a href="#comein">Login</a></li>
+                {{#unless login}}
+                <li class="list-item"> <a href="/login">Login</a></li>
+                {{else}}
                 <li class="list-item"> <a href="#comeout">Logout</a></li>
+                {{/unless}} 
             </ul>
         </nav>
         <h1> The Tech Blog </h1>
@@ -26,6 +29,9 @@
     <main>
 {{{body}}}
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+
     
 
 </body>
