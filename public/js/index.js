@@ -1,4 +1,5 @@
 const loginForm = $("#login-form");
+const logoutBtn = $(".btn-logout");
 const loginHandler = async (event) => {
     try {
         event.preventDefault();
@@ -19,4 +20,18 @@ const loginHandler = async (event) => {
         alert("failed to login");
     }
 }
+const logoutHandler = async (event) => {
+    try {
+        await $.ajax({
+            url: "/api/user/logout",
+            method: "POST",
+        });
+        window.location.replace("/login");
+    } catch (error) {
+        alert("failed to logout");
+    }
+};
+
+
 loginForm.on("submit", loginHandler);
+logoutBtn.on("click", logoutHandler);

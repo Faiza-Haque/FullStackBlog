@@ -17,5 +17,14 @@ router.post("/login", async (req, res) => {
     });
     // res.json({ message: "you are logged in" })   
 });
+router.post("/logout", (req, res) => {
+    if (req.session.login) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
 module.exports = router 
 
