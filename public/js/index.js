@@ -54,7 +54,7 @@ const logoutHandler = async (event) => {
     }
 };
 const postHandler = async (event) => {
-    event.preventDefaul()
+    event.preventDefault()
     const title = $("#title").val().trim();
     const content = $("#content").val().trim();
     const res = await $.ajax({
