@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Post } = require("../../models");
 router.post("/login", async (req, res) => {
     const user = await User.findOne({ where: { username: req.body.username } });
     console.log("user:", user)
@@ -43,6 +43,16 @@ router.post("/signup", async (req, res) => {
         req.session.login = true
         res.status(200).json({ newUser, message: "you are signed up" })
     });
+})
+router.post("/dashboard", async (req,res) =>{
+    console.log("title", req.body.title)
+    console.log("content", req.body.content)
+    const post = await Post.create({
+        title: req.body.title,
+        content: req.body.content,
+        user_id: req.session.user_id
+    });
+    res.status(200).json({ message: "you are signed up" });
 })
 module.exports = router
 
