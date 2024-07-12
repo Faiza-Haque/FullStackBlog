@@ -32,7 +32,7 @@ router.get("/dashboard", auth, async (req, res) => {
 router.get("/dashboard/post/:id", auth, async (req, res) => {
     const postData = await Post.findOne({ where: { id: req.params.id }})
     const post = postData.get({ plain: true });
-    res.render("post", {post, login:req.session.login});
+    res.render("post-editor", {post, login:req.session.login});
 });
 
 module.exports = router;
