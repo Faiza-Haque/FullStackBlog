@@ -25,7 +25,8 @@
     </header>
     <main>
         <section>
-            <form>
+            <form id="post-form">
+
                 <div class="dashboard-container">
                     <div class="dashboard-title">
                         <span>
@@ -35,19 +36,19 @@
                     <div class="dashboard-body">
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" id="new-poster-title" name="title" class="input">
+                            <input type="text" id="title" name="title" class="input">
                         </div>
                         <div class="form-group">
-                            <label for="content">Content</label>
-                            <input type="text" id="new-poster-content" name="content" class="input">
+                            <label for="content">content</label>
+                            <input type="text" id="content" name="content" class="input">
                         </div>
-                        <button class="btn">Create</button>
+                        <button class="btn" type="submit">Create</button>
                     </div>
 
                 </div>
             </form>
             <div class="btn-container">
-                <button class="btn btn-new-post">Add New Post</button>
+                <button class="btn btn-new-post" id="add-btn">Add New Post</button>
             </div>
         </section>
 

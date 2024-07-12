@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Model } = require("sequelize");
+const auth = require("../middlewares/auth")
 const { User, Post, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
@@ -16,9 +16,17 @@ router.get("/", async (req, res) => {
 router.get("/login", (req, res) => {
     res.render("login");
 });
- 
-router.get("/signup", (req, res) => {
-    res.render("signup");});
-   
 
+router.get("/signup", (req, res) => {
+    res.render("signup");
+});
+
+router.get("/dashboard", auth, async (req, res) => {
+    const userData = await User.findOne({ where: { id: req.session.user_id }, include:[{model:Post}] });
+    const posts = userData.posts.map((post) => post.get({ plain: true }));
+    console.log (userData)
+    res.render("dashboard", {posts, login:req.session.login});
+
+
+})
 module.exports = router;
