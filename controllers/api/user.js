@@ -54,5 +54,22 @@ router.post("/dashboard", async (req,res) =>{
     });
     res.status(200).json({ message: "you are signed up" });
 })
+router.put("/dashboard/post/:id", async(req,res)=>{
+    await Post.update({
+        title: req.body.title,
+        content: req.body.content
+    },{
+        where: {id: req.params.id}
+    });
+    res.status(200).json({ message:"edit post sucessfully"});
+});
+router.delete("/dashboard/post/:id", async(req,res)=>{
+    await Post.destroy({
+        where: {id: req.params.id}
+    });
+    res.status(200).json({ message:"delete post sucessfully"});
+});
+
+
 module.exports = router
 
