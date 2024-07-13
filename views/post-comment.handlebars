@@ -1,0 +1,29 @@
+<section>
+    <div class="container">
+        <div class="header">
+            <h2>{{post.title}}</h2>
+            <span>posted by {{post.users.username}} 07.06.2024</span>
+        </div>
+        <div class="body">
+            <p>{{post.content}}</p>
+        </div>
+    </div>
+    {{#each comments as |comment| }}
+    {{> comment-details}}
+    {{/each}}
+    <form id="comment-form" data-post-id="{{post.id}}">
+
+        <div class="dashboard-container">
+
+            <div class="dashboard-body">
+
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <input type="text" id="comment" name="comment" class="input">
+                </div>
+                <button class="btn" type="submit">Add Comment</button>
+            </div>
+
+        </div>
+    </form>
+</section>

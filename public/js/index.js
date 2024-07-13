@@ -1,8 +1,9 @@
 const loginForm = $("#login-form");
 const signupForm = $("#signup-form");
 const postForm = $("#post-form");
-const postEditForm = $("#post-from-editor")
-const deleteBtn = $("#delete-btn")
+const postEditForm = $("#post-from-editor");
+const commentForm = $("#comment-form");
+const deleteBtn = $("#delete-btn");
 const logoutBtn = $(".btn-logout");
 const loginHandler = async (event) => {
     try {
@@ -85,6 +86,19 @@ const postEditHandler = async (event) => {
     $("#title").val("");
     $("#content").val("")
 }
+const commentHandler = async(event)=>{
+    event.preventDefault();
+    const content = $("#comment").val().trim();
+    const postId = commentForm.data("postId");
+    const res = await $.ajax({
+        url: `/api/user/post/${postId}`,
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ content }),
+    });
+    if (res) window.location.replace(`/post/${postId}`);
+    $("#comment").val("");
+}
 const deleteHandler = async () => {
     const id = postEditForm.data("postId");
     const res = await $.ajax({
@@ -102,5 +116,7 @@ loginForm.on("submit", loginHandler);
 signupForm.on("submit", signupHandler);
 postForm.on("submit", postHandler);
 postEditForm.on("submit", postEditHandler);
+commentForm.on("submit", commentHandler);
 logoutBtn.on("click", logoutHandler);
 deleteBtn.on("click", deleteHandler);
+
