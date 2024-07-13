@@ -86,12 +86,15 @@ const postEditHandler = async (event) => {
     $("#content").val("")
 }
 const deleteHandler = async () => {
-    const id = ppostEditForm.data("postId");
+    const id = postEditForm.data("postId");
     const res = await $.ajax({
         url: `/api/user/dashboard/post/${id}`,
         method: "DELETE",
+        complete: (xhr, status) => {
+            if (xhr.status === 200) window.location.replace("/dashboard");
+        }
     });
-    if (res) window.location.replace("/dashboard");
+
 }
 
 

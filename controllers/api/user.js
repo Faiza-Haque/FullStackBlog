@@ -67,6 +67,7 @@ router.delete("/dashboard/post/:id", async(req,res)=>{
     await Post.destroy({
         where: {id: req.params.id}
     });
+    console.log("backend removed a post successfully")
     res.status(200).json({ message:"delete post sucessfully"});
 });
 
