@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
+// Route to handle user login
 router.post("/login", async (req, res) => {
     const user = await User.findOne({ where: { username: req.body.username } });
     console.log("user:", user)
@@ -17,6 +18,7 @@ router.post("/login", async (req, res) => {
     });
     // res.json({ message: "you are logged in" })   
 });
+// Route to handle user logout
 router.post("/logout", (req, res) => {
     if (req.session.login) {
         req.session.destroy(() => {
@@ -26,6 +28,7 @@ router.post("/logout", (req, res) => {
         res.status(404).end();
     }
 });
+// Route to handle user signup
 router.post("/signup", async (req, res) => {
     const user = await User.findOne({
         where: { username: req.body.username }
@@ -44,6 +47,7 @@ router.post("/signup", async (req, res) => {
         res.status(200).json({ newUser, message: "you are signed up" })
     });
 })
+// Route to handle creating a new post
 router.post("/dashboard", async (req,res) =>{
     console.log("title", req.body.title)
     console.log("content", req.body.content)
@@ -54,6 +58,7 @@ router.post("/dashboard", async (req,res) =>{
     });
     res.status(200).json({ message: "you are signed up" });
 })
+// Route to handle adding a comment to a post
 router.post("/post/:id", async (req,res)=>{
     const comment = await Comment.create({
         comment_text: req.body.content,
@@ -62,6 +67,7 @@ router.post("/post/:id", async (req,res)=>{
     });
     res.status(200).json({ message: "you are signed up" });
 });
+// Route to handle updating a post
 router.put("/dashboard/post/:id", async(req,res)=>{
     await Post.update({
         title: req.body.title,
@@ -71,6 +77,7 @@ router.put("/dashboard/post/:id", async(req,res)=>{
     });
     res.status(200).json({ message:"edit post sucessfully"});
 });
+// Route to handle deleting a post
 router.delete("/dashboard/post/:id", async(req,res)=>{
     await Post.destroy({
         where: {id: req.params.id}
