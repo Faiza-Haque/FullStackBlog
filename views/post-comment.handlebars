@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header">
             <h2>{{post.title}}</h2>
-            <span>posted by {{post.users.username}} 07.06.2024</span>
+            <span>posted by {{post.user.username}} {{formatDate post.createdAt}}</span>
         </div>
         <div class="body">
             <p>{{post.content}}</p>
